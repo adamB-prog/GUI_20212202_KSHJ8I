@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravityDash.Models", "GravityDash.Models\GravityDash.Models.csproj", "{9899E0EE-355A-46B5-872C-065EDBCD37F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravityDash.Logic", "GravityDash.Logic\GravityDash.Logic.csproj", "{775A2808-4FAC-4468-9739-9C2EC8659E78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravityDash.Repository", "GravityDash.Repository\GravityDash.Repository.csproj", "{14322F10-4B0E-43A1-9B65-2EC93260179F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravityDash.Data", "GravityDash.Data\GravityDash.Data.csproj", "{E088E51A-90EF-4472-821E-BA449F1767D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravityDash.Renderer", "GravityDash.Renderer\GravityDash.Renderer.csproj", "{408B9EDA-432B-409A-AA71-0DCD6E6A912A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{0779F539-05F4-45E5-8CFC-1C20C9424B6B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9899E0EE-355A-46B5-872C-065EDBCD37F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9899E0EE-355A-46B5-872C-065EDBCD37F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9899E0EE-355A-46B5-872C-065EDBCD37F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9899E0EE-355A-46B5-872C-065EDBCD37F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{775A2808-4FAC-4468-9739-9C2EC8659E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{775A2808-4FAC-4468-9739-9C2EC8659E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{775A2808-4FAC-4468-9739-9C2EC8659E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{775A2808-4FAC-4468-9739-9C2EC8659E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14322F10-4B0E-43A1-9B65-2EC93260179F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14322F10-4B0E-43A1-9B65-2EC93260179F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14322F10-4B0E-43A1-9B65-2EC93260179F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14322F10-4B0E-43A1-9B65-2EC93260179F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E088E51A-90EF-4472-821E-BA449F1767D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E088E51A-90EF-4472-821E-BA449F1767D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E088E51A-90EF-4472-821E-BA449F1767D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E088E51A-90EF-4472-821E-BA449F1767D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408B9EDA-432B-409A-AA71-0DCD6E6A912A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408B9EDA-432B-409A-AA71-0DCD6E6A912A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408B9EDA-432B-409A-AA71-0DCD6E6A912A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408B9EDA-432B-409A-AA71-0DCD6E6A912A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60892260-5338-428F-BC77-10DDC97D6C59}
+	EndGlobalSection
+EndGlobal
