@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GravityDash.Renderer
+namespace GravityDash.Main
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
