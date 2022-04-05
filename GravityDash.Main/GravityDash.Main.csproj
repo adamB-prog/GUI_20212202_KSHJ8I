@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GravityDash.Renderer\GravityDash.Renderer.csproj" />
+  </ItemGroup>
+
 </Project>
