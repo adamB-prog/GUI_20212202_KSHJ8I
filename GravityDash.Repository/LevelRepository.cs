@@ -20,6 +20,21 @@ namespace GravityDash.Repository
             //FOR TEST PURPOSES
             level = LoadLevel("Asset/test.tmx");
             level.Brushes = LoadBrushes("Asset/tileset_64x64(new).png");
+            SetupPlatforms();
+        }
+
+        void SetupPlatforms()
+        {
+            List<Platform> l = new List<Platform>();
+            string[] rows = File.ReadAllLines(Path.Combine("Asset", "platforms01.txt"));
+            foreach (var row in rows)
+            {
+                string[] data = row.Split(',');
+                l.Add(new Platform(
+                    int.Parse(data[0]), int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3])
+                    ));
+            }
+            level.Platforms = l;
         }
 
         public Level LoadLevel(string path)

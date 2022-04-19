@@ -26,7 +26,7 @@ namespace GravityDash.Renderer
             
 
             //player
-            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X * vp.Zoom + vp.X, model.PlayerRepository.ReadPlayer(1).Y * vp.Zoom + vp.Y, 32 * vp.Zoom, 32 * vp.Zoom));
+            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X * vp.Zoom + vp.X - model.PlayerRepository.ReadPlayer(1).Radius, model.PlayerRepository.ReadPlayer(1).Y * vp.Zoom + vp.Y - model.PlayerRepository.ReadPlayer(1).Radius, 32 * vp.Zoom, 32 * vp.Zoom));
 
         }
 

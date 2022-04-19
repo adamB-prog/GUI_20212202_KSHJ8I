@@ -39,39 +39,7 @@ namespace GravityDash.Renderer
             viewportWidth = width;
             viewportHeight = height;
         }
-        //public void Move()
-        //{
-        //    if (Keyboard.IsKeyDown(Key.Down))
-        //    {
-        //        Y += 5;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.Up))
-        //    {
-        //        Y -= 5;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.Left))
-        //    {
-        //        X -= 5;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.Right))
-        //    {
-        //        X += 5;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.Z))
-        //    {
 
-        //        Zoom += 0.01;
-
-
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.H))
-        //    {
-
-        //        Zoom -= 0.01;
-
-        //    }
-            
-        //}
         public void Follow()
         {
             

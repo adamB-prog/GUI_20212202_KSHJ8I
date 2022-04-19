@@ -11,6 +11,7 @@ namespace GravityDash.Models
     {
         public int[,] DrawingLayer { get; set; }
         public int[,] CollisionLayer { get; set; }
+        public List<Platform> Platforms { get; set; }
 
         public Brush[] Brushes { get; set; }
 

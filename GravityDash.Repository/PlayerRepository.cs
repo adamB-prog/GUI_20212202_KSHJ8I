@@ -22,8 +22,9 @@ namespace GravityDash.Repository
                 Y = 100,
                 ID = 1,
                 Name = "Slampa",
-                Character = new SolidColorBrush(Color.FromArgb(133, 255, 0, 0))
-
+                Character = new SolidColorBrush(Color.FromArgb(133, 255, 0, 0)),
+                Radius = 16,
+                CanJump = true
             }
            );
         }
