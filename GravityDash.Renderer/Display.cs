@@ -12,8 +12,7 @@ namespace GravityDash.Renderer
         private double areaWidth;
         private double areaHeight;
         IGameModel model;
-        public int vmx { get; set; } = 0;
-        private int vmy { get; set; } = 0;
+        ViewPort vp;
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
@@ -27,7 +26,7 @@ namespace GravityDash.Renderer
             
 
             //player
-            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X, model.PlayerRepository.ReadPlayer(1).Y, 64, 64));
+            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X * vp.Zoom + vp.X, model.PlayerRepository.ReadPlayer(1).Y * vp.Zoom + vp.Y, 32 * vp.Zoom, 32 * vp.Zoom));
 
         }
 
@@ -35,11 +34,16 @@ namespace GravityDash.Renderer
         {
             areaWidth = width;
             areaHeight = height;
+            vp.ResizeViewPort((int)width, (int)height);
             this.InvalidateVisual();
         }
         public void SetupModel(IGameModel model)
         {
             this.model = model;
+        }
+        public void SetupViewPort(ViewPort vp)
+        {
+            this.vp = vp;
         }
 
         private void DrawLevel(DrawingContext drawingContext)
@@ -52,31 +56,17 @@ namespace GravityDash.Renderer
                     {
                         continue;
                     }
-                    drawingContext.DrawRectangle((ImageBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i] - 1], null, new Rect(i * 32 + vmx, j * 32 + vmy, 32, 32));
+                    
+                    drawingContext.DrawRectangle((ImageBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i] - 1], 
+                        null, 
+                        new Rect(i * 32 * vp.Zoom + vp.X, 
+                        j * 32 * vp.Zoom + vp.Y, 
+                        32 * vp.Zoom, 
+                        32 * vp.Zoom));
                 }
             }
 
         }
-        //private Geometry GetLevelGeometry()
-        //{
-        //    GeometryGroup gg = new GeometryGroup();
-
-        //    for (int i = 0; i < model.LevelRepository.level.DrawingLayer.GetLength(1); i++)
-        //    {
-        //        for (int j = 0; j < model.LevelRepository.level.DrawingLayer.GetLength(0); j++)
-        //        {
-        //            if (model.LevelRepository.level.DrawingLayer[j, i] == 0)
-        //            {
-        //                continue;
-        //            }
-        //            gg.Children.Add(new GeometryDrawing((SolidColorBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i]], null,);
-        //        }
-        //    }
-
-
-
-
-        //    return gg;
-        //}
-    }
+        
+     }
 }
