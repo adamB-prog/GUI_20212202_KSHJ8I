@@ -1,5 +1,7 @@
 ﻿using GravityDash.Logic;
 using GravityDash.Logic.Input;
+using GravityDash.Models.Interfaces;
+using GravityDash.Renderer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +29,7 @@ namespace GravityDash.Main
         Stopwatch s = new Stopwatch();
         IGameModel model;
         ILogic logic;
+        ViewPort viewport;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,20 +37,25 @@ namespace GravityDash.Main
             model = new GameModel();
             logic = new InGameLogic(model, new KeyboardInput());
 
+
+            viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
+
+            display.SetupViewPort(viewport);
             display.SetupModel(model);
+
+
 
             CompositionTarget.Rendering += Render;
 
             var ts = new Task(() => {
 
-                //double time = 0;
+                
                 while (true)
                 {
-                    logic.Tick(); Thread.Sleep(1000 / 60);
-
-                    //display.vmx = (int)(100 * Math.Sin(time));
-                    //time += 0.1;
-                    
+                    logic.Tick();
+                    viewport.Follow(); 
+                    Thread.Sleep(1000 / 60);
+                   
                 }
             }, TaskCreationOptions.LongRunning);
             ts.Start();
@@ -63,7 +71,7 @@ namespace GravityDash.Main
         {
             s.Reset();
             s.Start();
-            
+            //viewport.Move();
             display.InvalidateVisual();
             s.Stop();
             Title = ((int)(1 / s.Elapsed.TotalMilliseconds)).ToString();
