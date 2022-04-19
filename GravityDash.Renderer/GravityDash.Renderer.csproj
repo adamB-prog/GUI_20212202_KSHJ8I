@@ -313,6 +313,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GravityDash.Logic\GravityDash.Logic.csproj" />
+    <ProjectReference Include="..\GravityDash.Models\GravityDash.Models.csproj" />
   </ItemGroup>
 
 </Project>
