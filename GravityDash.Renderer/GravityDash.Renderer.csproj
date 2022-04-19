@@ -6,7 +6,314 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Asset\asd\1.png" />
+    <None Remove="Asset\asd\10.png" />
+    <None Remove="Asset\asd\11.png" />
+    <None Remove="Asset\asd\12.png" />
+    <None Remove="Asset\asd\13.png" />
+    <None Remove="Asset\asd\14.png" />
+    <None Remove="Asset\asd\15.png" />
+    <None Remove="Asset\asd\16.png" />
+    <None Remove="Asset\asd\17.png" />
+    <None Remove="Asset\asd\18.png" />
+    <None Remove="Asset\asd\19.png" />
+    <None Remove="Asset\asd\2.png" />
+    <None Remove="Asset\asd\20.png" />
+    <None Remove="Asset\asd\21.png" />
+    <None Remove="Asset\asd\22.png" />
+    <None Remove="Asset\asd\23.png" />
+    <None Remove="Asset\asd\24.png" />
+    <None Remove="Asset\asd\25.png" />
+    <None Remove="Asset\asd\26.png" />
+    <None Remove="Asset\asd\27.png" />
+    <None Remove="Asset\asd\28.png" />
+    <None Remove="Asset\asd\29.png" />
+    <None Remove="Asset\asd\3.png" />
+    <None Remove="Asset\asd\30.png" />
+    <None Remove="Asset\asd\31.png" />
+    <None Remove="Asset\asd\32.png" />
+    <None Remove="Asset\asd\33.png" />
+    <None Remove="Asset\asd\34.png" />
+    <None Remove="Asset\asd\35.png" />
+    <None Remove="Asset\asd\36.png" />
+    <None Remove="Asset\asd\37.png" />
+    <None Remove="Asset\asd\38.png" />
+    <None Remove="Asset\asd\39.png" />
+    <None Remove="Asset\asd\4.png" />
+    <None Remove="Asset\asd\40.png" />
+    <None Remove="Asset\asd\41.png" />
+    <None Remove="Asset\asd\42.png" />
+    <None Remove="Asset\asd\43.png" />
+    <None Remove="Asset\asd\44.png" />
+    <None Remove="Asset\asd\45.png" />
+    <None Remove="Asset\asd\46.png" />
+    <None Remove="Asset\asd\47.png" />
+    <None Remove="Asset\asd\48.png" />
+    <None Remove="Asset\asd\49.png" />
+    <None Remove="Asset\asd\5.png" />
+    <None Remove="Asset\asd\50.png" />
+    <None Remove="Asset\asd\51.png" />
+    <None Remove="Asset\asd\52.png" />
+    <None Remove="Asset\asd\53.png" />
+    <None Remove="Asset\asd\54.png" />
+    <None Remove="Asset\asd\55.png" />
+    <None Remove="Asset\asd\56.png" />
+    <None Remove="Asset\asd\57.png" />
+    <None Remove="Asset\asd\58.png" />
+    <None Remove="Asset\asd\59.png" />
+    <None Remove="Asset\asd\6.png" />
+    <None Remove="Asset\asd\60.png" />
+    <None Remove="Asset\asd\61.png" />
+    <None Remove="Asset\asd\62.png" />
+    <None Remove="Asset\asd\63.png" />
+    <None Remove="Asset\asd\64.png" />
+    <None Remove="Asset\asd\65.png" />
+    <None Remove="Asset\asd\66.png" />
+    <None Remove="Asset\asd\67.png" />
+    <None Remove="Asset\asd\68.png" />
+    <None Remove="Asset\asd\69.png" />
+    <None Remove="Asset\asd\7.png" />
+    <None Remove="Asset\asd\70.png" />
+    <None Remove="Asset\asd\71.png" />
+    <None Remove="Asset\asd\72.png" />
+    <None Remove="Asset\asd\8.png" />
+    <None Remove="Asset\asd\9.png" />
+    <None Remove="Asset\test.tmx" />
+    <None Remove="Asset\tileset_64x64%28new%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Asset\asd\1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\21.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\22.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\23.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\25.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\26.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\27.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\28.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\30.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\31.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\33.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\34.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\35.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\36.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\37.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\38.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\39.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\40.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\41.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\42.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\43.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\44.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\45.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\46.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\47.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\49.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\51.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\52.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\53.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\54.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\55.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\56.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\57.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\58.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\59.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\60.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\61.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\62.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\63.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\65.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\66.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\67.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\68.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\69.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\70.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\71.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\72.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\asd\9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\test.tmx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\tileset_64x64(new).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GravityDash.Logic\GravityDash.Logic.csproj" />
+    <ProjectReference Include="..\GravityDash.Models\GravityDash.Models.csproj" />
   </ItemGroup>
 
 </Project>

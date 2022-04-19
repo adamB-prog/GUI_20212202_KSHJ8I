@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GravityDash.Main"
         xmlns:renderer="clr-namespace:GravityDash.Renderer;assembly=GravityDash.Renderer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GravityDash" Height="721" Width="1280" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" SizeChanged="Window_SizeChanged">
     <Grid>
         <renderer:Display x:Name="display" />
     </Grid>
