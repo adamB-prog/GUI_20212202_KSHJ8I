@@ -1,4 +1,5 @@
-﻿using GravityDash.Repository;
+﻿using GravityDash.Models;
+using GravityDash.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

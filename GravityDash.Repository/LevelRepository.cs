@@ -1,6 +1,7 @@
 ﻿using GravityDash.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,43 @@ namespace GravityDash.Repository
         public Level level { get; private set; }
         public LevelRepository()
         {
-
             //FOR TEST PURPOSES
             level = LoadLevel("Asset/test.tmx");
             level.Brushes = LoadBrushes("Asset/tileset_64x64(new).png");
             SetupPlatforms();
+            level.cbToShoot = new CannonBall(-50, -50, 90);
+            level.CannonBalls = Enumerable.Range(1, 10).Select(x => new CannonBall(-50, -50, 90)).ToList();
         }
+        public void UpdateCbToShoot(CannonBall cb)
+        {
+            level.cbToShoot.X = cb.X;
+            level.cbToShoot.Y = cb.Y;
+            level.cbToShoot.Angle = cb.Angle;
+        }
+
+        public CannonBall ReadCbToShoot()
+        {
+            return level.cbToShoot;
+        }
+
+        public void AddCb(CannonBall cb)
+        {
+            int idx = level.CannonBalls.FindIndex(cb => cb.Ignore);
+            if(idx >= 0)
+            {
+                level.CannonBalls[idx].X = cb.X;
+                level.CannonBalls[idx].Y = cb.Y;
+                level.CannonBalls[idx].Angle = cb.Angle;
+                level.CannonBalls[idx].Velocity = cb.Velocity;
+                level.CannonBalls[idx].Ignore = false;
+            }
+            else
+            {
+                Debug.WriteLine("cb Stack full");
+            }
+        }
+
+
 
         void SetupPlatforms()
         {

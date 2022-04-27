@@ -78,6 +78,7 @@
     <None Remove="Asset\asd\72.png" />
     <None Remove="Asset\asd\8.png" />
     <None Remove="Asset\asd\9.png" />
+    <None Remove="Asset\cb.png" />
     <None Remove="Asset\platforms01.txt" />
     <None Remove="Asset\test.tmx" />
     <None Remove="Asset\tileset_64x64%28new%29.png" />
@@ -298,6 +299,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\asd\9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\cb.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\platforms01.txt">

@@ -41,7 +41,7 @@ namespace GravityDash.Main
             viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
 
             display.SetupViewPort(viewport);
-            display.SetupModel(model);
+            display.SetupModel(model);//
 
 
 
@@ -86,6 +86,24 @@ namespace GravityDash.Main
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             display.Resize(this.ActualWidth, this.ActualHeight);
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)//
+        {
+            if ((logic as InGameLogic).cbToShoot != null)
+                (logic as InGameLogic).CbMove(e.GetPosition(grid));
+        }
+
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if ((logic as InGameLogic).cbToShoot != null)
+                (logic as InGameLogic).CbRotate(e.Delta);
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if ((logic as InGameLogic).cbToShoot != null)
+                (logic as InGameLogic).CbShoot();
         }
     }
 }
