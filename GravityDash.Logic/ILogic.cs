@@ -12,6 +12,8 @@ namespace GravityDash.Logic
     {
         void Tick();
 
+        void CbSpawner();
+
         void GetKeyDown(KeyEventArgs e);
 
         void GetKeyUp(KeyEventArgs e);

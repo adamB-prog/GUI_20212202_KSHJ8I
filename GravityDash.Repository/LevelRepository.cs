@@ -47,10 +47,6 @@ namespace GravityDash.Repository
                 level.CannonBalls[idx].Velocity = cb.Velocity;
                 level.CannonBalls[idx].Ignore = false;
             }
-            else
-            {
-                Debug.WriteLine("cb Stack full");
-            }
         }
 
 

@@ -74,7 +74,6 @@ namespace GravityDash.Models
                     Velocity = new Vector2(Velocity.X, 0);
                     canRotate = true;
                 }
-                //TODO:összes oldalra + sarkakra..
             }
             if (other is CannonBall cb)
             {
@@ -101,6 +100,8 @@ namespace GravityDash.Models
             {
                 if (player.Y < Y)
                     player.CanJump = true;
+                else
+                    player.CanJump = false;
 
                 Vector2 delta = Vector2.Subtract(new Vector2((float)X, (float)Y), new Vector2((float)player.X, (float)player.Y));
                 float d = delta.Length();
@@ -122,7 +123,7 @@ namespace GravityDash.Models
                 float i = (-(1.0f + restitution) * vn) / (im1 + im2);
                 Vector2 impulse = Vector2.Multiply(Vector2.Normalize(mtd), i);
 
-                Velocity = Vector2.Add(Velocity, Vector2.Multiply(impulse, im1));
+                //Velocity = Vector2.Add(Velocity, Vector2.Multiply(impulse, im1));
                 player.Velocity = Vector2.Subtract(player.Velocity, Vector2.Multiply(impulse, im2));
 
             }

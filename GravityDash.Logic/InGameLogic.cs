@@ -3,12 +3,14 @@ using GravityDash.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Windows.Media.Imaging;
 
 namespace GravityDash.Logic
 {
@@ -19,16 +21,112 @@ namespace GravityDash.Logic
         const int MAXFALLSPEED = 5;
         const float GRAVITY = 0.05f;
         public CannonBall cbToShoot { get; set; }//repo
+        Random rnd = new Random();
         public InGameLogic(IGameModel model, IInput input)
         {
             this.input = input;
             this.model = model;
         }
 
+        public void CbSpawner()
+        {
+            Point playerCoordinates = new Point(model.PlayerRepository.ReadPlayer(1).X, model.PlayerRepository.ReadPlayer(1).Y);
+            int cbX, cbY, angle;
+            int spawnOption = rnd.Next(0, 5);
+            Debug.WriteLine($"{spawnOption}. spawnoption");
+            if (spawnOption == 0)
+            {
+                //balról jön
+                cbX = (int)playerCoordinates.X - 200 + (rnd.Next(0,2)==1 ? -1* rnd.Next(0,25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle);
+            }
+            else if (spawnOption == 1)
+            {
+                //jobbról jön
+                cbX = (int)playerCoordinates.X + 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 180;
+                Spawn(cbX, cbY, angle);
+            }
+            else if (spawnOption == 2 && playerCoordinates.Y > 500)
+            {
+                //combo balról
+                cbX = (int)playerCoordinates.X - 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 285;
+                Spawn(cbX, cbY, angle);
+                cbX = (int)playerCoordinates.X - 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle);
+                cbY = (int)playerCoordinates.Y - 90 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                Spawn(cbX, cbY, angle);
+
+            }
+            else if (spawnOption == 3 && playerCoordinates.Y > 500)
+            {
+                //combo jobbról
+                cbX = (int)playerCoordinates.X + 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 265;
+                Spawn(cbX, cbY, angle);
+                cbX = (int)playerCoordinates.X + 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 180;
+                Spawn(cbX, cbY, angle);
+                cbY = (int)playerCoordinates.Y - 90 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                Spawn(cbX, cbY, angle);
+            }
+            else if (spawnOption >= 4 &&  playerCoordinates.Y > 500)
+            {
+                //Szönyegbomba
+                cbX = (int)playerCoordinates.X - 300 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 50 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle, 500);
+                cbX = (int)playerCoordinates.X - 300 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 100 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle, 500);
+                cbX = (int)playerCoordinates.X - 300 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 150 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle, 600);
+                cbX = (int)playerCoordinates.X - 300 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 200 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle, 700);
+                cbX = (int)playerCoordinates.X - 300 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 25) : rnd.Next(0, 25));
+                cbY = (int)playerCoordinates.Y - 250 + (rnd.Next(0, 2) == 1 ? -1 * rnd.Next(0, 5) : rnd.Next(0, 5));
+                angle = 0;
+                Spawn(cbX, cbY, angle, 800);
+            }
+        }
+
+        private void Spawn(int cbX, int cbY, int angle, int sleepTime = 0)
+        {
+            cbToShoot = new CannonBall(cbX, cbY, angle);
+            double rad = (cbToShoot.Angle) * (Math.PI / 180);
+            double dx = (Math.Cos(rad) < 0.0001 && Math.Cos(rad) > -0.0001 ? 0 : Math.Cos(rad));
+            double dy = Math.Sin(rad);
+            Vector2 v = new Vector2((float)dx * 10, (float)(rad > 0 && rad < Math.PI ? dy * 5 : 0));
+            cbToShoot.Velocity = v;
+            model.LevelRepository.UpdateCbToShoot(cbToShoot);
+            if (sleepTime == 0)
+                Thread.Sleep(rnd.Next(850, 1151));
+            else
+                Thread.Sleep(sleepTime);
+            model.LevelRepository.AddCb(cbToShoot);
+            cbToShoot = null;
+            CannonBall defaultCb = new CannonBall(-50, -50, 0);
+            model.LevelRepository.UpdateCbToShoot(defaultCb);
+        }
+
         public void Tick()
         {
             CalculateNewVectors();
-            HandleNumberInputs();//
             foreach (var x in model.PlayerRepository.ReadAllPlayer())
             {
                 x.X += x.Velocity.X;
@@ -43,42 +141,14 @@ namespace GravityDash.Logic
                     CannonBall defaultCb = new CannonBall(-50, -50, 0);
                     x.SetToDefault(defaultCb);
                 }
-                Debug.WriteLine($"Active cb count: {model.LevelRepository.level.CannonBalls.Where(cb => !cb.Ignore).Count()}");
             }
 
-            //Collision check and resolve  model.PlayerRepository.ReadAllPlayer()
             foreach (var platform in model.LevelRepository.level.Platforms)
             {
                 foreach (var player in model.PlayerRepository.ReadAllPlayer())
                 {
-                    if (player.IsCollision(platform)) //TODO: player osztaly kezelje le Collision() metodussal átláthatóságért
-                    {
-                        if (player.X > platform.X + platform.Width)
-                        {
-                            player.X = platform.X + platform.Width + player.Radius;
-                            player.Velocity = new Vector2(0, player.Velocity.Y);
-                            player.CanJump = true;
-                        }
-                        else if (player.X < platform.X)
-                        {
-                            player.X = platform.X - player.Radius;
-                            player.Velocity = new Vector2(0, player.Velocity.Y);
-                            player.CanJump = true;
-                        }
-                        else if (player.Y < platform.Y)
-                        {
-                            player.Y = platform.Y - (player.Radius);
-                            player.Velocity = new Vector2(player.Velocity.X, 0);
-                            if (player.CanJump == false)
-                                player.CanJump = true;
-                        }
-                        else if (player.Y > platform.Y)
-                        {
-                            player.Y = platform.Y + platform.Height + player.Radius;
-                            player.Velocity = new Vector2(player.Velocity.X, 0);
-                        }
-
-                    }
+                    if (player.IsCollision(platform))
+                        player.Collision(platform);
                 }
 
                 foreach (var cb in model.LevelRepository.level.CannonBalls.Where(cb => !cb.Ignore))
@@ -116,87 +186,12 @@ namespace GravityDash.Logic
         {
             input.GetKeyUp(e);
         }
-
-        private void HandleNumberInputs()//
-        {
-            //Debug.WriteLine(cbToShoot == null ? "Nulla" : "Van CB");
-            if (input.ActiveMovements.Contains("D1"))
-            {
-                if (cbToShoot == null)
-                {
-                    cbToShoot = new CannonBall(-50, -50, 90);
-                }
-            }
-            if (input.ActiveMovements.Contains("D2"))
-            {
-                if (cbToShoot == null)
-                {
-                    cbToShoot = new CannonBall(-50, -50, 180);
-                }
-
-            }
-            if (input.ActiveMovements.Contains("D3"))
-            {
-                if (cbToShoot == null)
-                {
-                    cbToShoot = new CannonBall(-50, -50, 0);
-                }
-            }
-            if (input.ActiveMovements.Contains("Q"))
-            {
-                if (cbToShoot != null)
-                {
-                    cbToShoot = new CannonBall(-50, -50, 0);
-                    model.LevelRepository.UpdateCbToShoot(cbToShoot);
-                    cbToShoot = null;
-                }
-            }
-        }
-        public void CbMove(Point position)
-        {
-            
-            cbToShoot.X = position.X;
-            cbToShoot.Y = position.Y;
-            model.LevelRepository.UpdateCbToShoot(cbToShoot);
-            //Debug.WriteLine($"{model.LevelRepository.ReadCbToShoot().X}:{model.LevelRepository.ReadCbToShoot().Y}");
-        }
-
-        public void CbRotate(int delta)
-        {
-            if (delta > 0)
-            {
-                cbToShoot.Angle += 15;
-                model.LevelRepository.UpdateCbToShoot(cbToShoot);
-            }
-            else
-            {
-                cbToShoot.Angle -= 15;
-                model.LevelRepository.UpdateCbToShoot(cbToShoot);
-            }
-        }
-
-        public void CbShoot()
-        {
-            double rad = (cbToShoot.Angle) * (Math.PI / 180);
-            double dx = (Math.Cos(rad) < 0.0001 && Math.Cos(rad) > -0.0001 ? 0 : Math.Cos(rad));
-            double dy = Math.Sin(rad);
-            Vector2 v = new Vector2((float)dx * 10, (float)(rad > 0 && rad < Math.PI ? dy * 5 : 0));
-            cbToShoot.Velocity = v;
-            model.LevelRepository.AddCb(cbToShoot);
-
-            cbToShoot = null;
-            CannonBall defaultCb = new CannonBall(-50, -50, 0);
-            model.LevelRepository.UpdateCbToShoot(defaultCb);
-        }
-
         private void CalculateNewVectors()
         {
-            //TODO: JUST FOR ME, not for everybody(when networking comes)
             foreach (var player in model.PlayerRepository.ReadAllPlayer())
             {
                 //Gravitáció
                 player.Velocity = Vector2.Add(player.Velocity, new Vector2(0, GRAVITY)).Y < MAXFALLSPEED ? Vector2.Add(player.Velocity, new Vector2(0, GRAVITY)) : new Vector2(player.Velocity.X, MAXFALLSPEED);
-
                 if (input.ActiveMovements.Contains("A") && input.ActiveMovements.Contains("D")) 
                 {
                     if (player.Velocity.X == -5 || player.Velocity.X == 5)
@@ -215,7 +210,6 @@ namespace GravityDash.Logic
                     if (player.Velocity.X < 0)
                     {
                         player.Velocity = Vector2.Add(player.Velocity, new Vector2(0.1f, 0));
-                        Debug.WriteLine($"VelocityX: {player.Velocity.X}");
                     }
                     else { player.Velocity = new Vector2(5, player.Velocity.Y); }
                 }
@@ -241,8 +235,7 @@ namespace GravityDash.Logic
                 }
                 if (input.ActiveMovements.Contains("S"))
                 {
-                    //TODO: change characterSkin to the crouching one
-                    if(player.Radius == 16) //default radius
+                    if(player.Radius == 16)//default radius
                     {
                         player.Radius = 12;
                         player.Y += 4;

@@ -80,6 +80,7 @@
     <None Remove="Asset\asd\9.png" />
     <None Remove="Asset\cb.png" />
     <None Remove="Asset\platforms01.txt" />
+    <None Remove="Asset\player.png" />
     <None Remove="Asset\test.tmx" />
     <None Remove="Asset\tileset_64x64%28new%29.png" />
   </ItemGroup>
@@ -305,6 +306,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\platforms01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\player.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\test.tmx">

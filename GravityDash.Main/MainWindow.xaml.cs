@@ -59,6 +59,16 @@ namespace GravityDash.Main
                 }
             }, TaskCreationOptions.LongRunning);
             ts.Start();
+
+            var spawnerTask = new Task(() =>
+            {
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    logic.CbSpawner();
+                }
+            }, TaskCreationOptions.LongRunning);
+            spawnerTask.Start();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -86,24 +96,6 @@ namespace GravityDash.Main
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             display.Resize(this.ActualWidth, this.ActualHeight);
-        }
-
-        private void Window_MouseMove(object sender, MouseEventArgs e)//
-        {
-            if ((logic as InGameLogic).cbToShoot != null)
-                (logic as InGameLogic).CbMove(e.GetPosition(grid));
-        }
-
-        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if ((logic as InGameLogic).cbToShoot != null)
-                (logic as InGameLogic).CbRotate(e.Delta);
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if ((logic as InGameLogic).cbToShoot != null)
-                (logic as InGameLogic).CbShoot();
         }
     }
 }

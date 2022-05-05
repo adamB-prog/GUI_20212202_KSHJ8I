@@ -21,6 +21,37 @@ namespace GravityDash.Models
         public int Radius { get; set; }
         public bool CanJump { get; set; }
 
+        public void Collision(GameItem other)
+        {
+            if(other is Platform platform)
+            {
+                if (X > platform.X + platform.Width)
+                {
+                    X = platform.X + platform.Width + Radius;
+                    Velocity = new Vector2(0, Velocity.Y);
+                    CanJump = true;
+                }
+                else if (X < platform.X)
+                {
+                    X = platform.X - Radius;
+                    Velocity = new Vector2(0, Velocity.Y);
+                    CanJump = true;
+                }
+                else if (Y < platform.Y)
+                {
+                    Y = platform.Y - (Radius);
+                    Velocity = new Vector2(Velocity.X, 0);
+                    if (CanJump == false)
+                        CanJump = true;
+                }
+                else if (Y > platform.Y)
+                {
+                    Y = platform.Y + platform.Height + Radius;
+                    Velocity = new Vector2(Velocity.X, 0);
+                }
+            }
+        }
+
         public override Geometry Area
         {
             get
