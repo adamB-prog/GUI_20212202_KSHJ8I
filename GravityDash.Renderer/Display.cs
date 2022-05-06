@@ -1,5 +1,7 @@
 using GravityDash.Logic;
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
@@ -16,17 +18,32 @@ namespace GravityDash.Renderer
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-
+           
             //Background
             drawingContext.DrawRectangle(new LinearGradientBrush(Color.FromArgb(255, 249, 194, 199), Color.FromArgb(255, 152, 185, 231), new Point(1,0), new Point(1,1)), null, new Rect(0, 0, areaWidth, areaHeight));
             
             //Level
             DrawLevel(drawingContext);
 
-            
+            //DrawCannonss
+            //TODO: paraméterekbe is vp
+            if (model.LevelRepository.ReadCbToShoot()!=null)
+            {
+                drawingContext.PushTransform(new RotateTransform(model.LevelRepository.ReadCbToShoot().Angle - 180, model.LevelRepository.ReadCbToShoot().X, model.LevelRepository.ReadCbToShoot().Y));
+                drawingContext.DrawGeometry(model.LevelRepository.ReadCbToShoot().Character, null, model.LevelRepository.ReadCbToShoot().Area);
+                drawingContext.Pop();
+            }
+            foreach (var item in model.LevelRepository.level.CannonBalls.Where(cb => !cb.Ignore))
+            {
+                drawingContext.PushTransform(new RotateTransform(item.Angle - 180 + item.DisplayAngle, item.X, item.Y));
+                drawingContext.DrawGeometry(item.Character, null, item.Area);
+                drawingContext.Pop();
+            }
 
             //player
-            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X * vp.Zoom + vp.X, model.PlayerRepository.ReadPlayer(1).Y * vp.Zoom + vp.Y, 32 * vp.Zoom, 32 * vp.Zoom));
+            //drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X * vp.Zoom + vp.X - model.PlayerRepository.ReadPlayer(1).Radius, model.PlayerRepository.ReadPlayer(1).Y * vp.Zoom + vp.Y - model.PlayerRepository.ReadPlayer(1).Radius, 32 * vp.Zoom, 32 * vp.Zoom));
+            drawingContext.DrawRectangle(model.PlayerRepository.ReadPlayer(1).Character, null, new Rect(model.PlayerRepository.ReadPlayer(1).X - model.PlayerRepository.ReadPlayer(1).Radius, model.PlayerRepository.ReadPlayer(1).Y - model.PlayerRepository.ReadPlayer(1).Radius, 32, 32));
+
 
         }
 
@@ -57,12 +74,18 @@ namespace GravityDash.Renderer
                         continue;
                     }
                     
-                    drawingContext.DrawRectangle((ImageBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i] - 1], 
-                        null, 
-                        new Rect(i * 32 * vp.Zoom + vp.X, 
-                        j * 32 * vp.Zoom + vp.Y, 
-                        32 * vp.Zoom, 
-                        32 * vp.Zoom));
+                    //drawingContext.DrawRectangle((ImageBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i] - 1], 
+                    //    null, 
+                    //    new Rect(i * 32 * vp.Zoom + vp.X, 
+                    //    j * 32 * vp.Zoom + vp.Y, 
+                    //    32 * vp.Zoom, 
+                    //    32 * vp.Zoom));
+                    drawingContext.DrawRectangle((ImageBrush)model.LevelRepository.level.Brushes[model.LevelRepository.level.DrawingLayer[j, i] - 1],
+                       null,
+                       new Rect(i * 32,
+                       j * 32,
+                       32,
+                       32));
                 }
             }
 

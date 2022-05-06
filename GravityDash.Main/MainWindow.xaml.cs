@@ -41,7 +41,7 @@ namespace GravityDash.Main
             viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
 
             display.SetupViewPort(viewport);
-            display.SetupModel(model);
+            display.SetupModel(model);//
 
 
 
@@ -59,6 +59,26 @@ namespace GravityDash.Main
                 }
             }, TaskCreationOptions.LongRunning);
             ts.Start();
+
+            var spawnerTask = new Task(() =>
+            {
+                Thread.Sleep(4000);
+                while (true)
+                {
+                    logic.CbSpawner();
+                }
+            }, TaskCreationOptions.LongRunning);
+            spawnerTask.Start();
+
+            var animationTask = new Task(() =>
+            {
+
+                while (true)
+                {
+                    logic.PlayerAnimation();
+                }
+            }, TaskCreationOptions.LongRunning);
+            animationTask.Start();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

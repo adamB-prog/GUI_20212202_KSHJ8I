@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:GravityDash.Main"
         xmlns:renderer="clr-namespace:GravityDash.Renderer;assembly=GravityDash.Renderer"
         mc:Ignorable="d"
-        Title="GravityDash" Height="721" Width="1280" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" SizeChanged="Window_SizeChanged">
-    <Grid>
+        Title="GravityDash" Height="1080" Width="1920" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" SizeChanged="Window_SizeChanged">
+    <Grid x:Name="grid">
         <renderer:Display x:Name="display" />
     </Grid>
 </Window>

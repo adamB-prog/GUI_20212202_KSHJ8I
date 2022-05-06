@@ -15,6 +15,5 @@ namespace GravityDash.Logic
 
         PlayerRepository PlayerRepository { get; set; }
 
-
     }
 }

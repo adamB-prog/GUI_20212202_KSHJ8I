@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GravityDash.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace GravityDash.Logic
     {
         void Tick();
 
+        void CbSpawner();
+
+        void PlayerAnimation();
         void GetKeyDown(KeyEventArgs e);
 
         void GetKeyUp(KeyEventArgs e);

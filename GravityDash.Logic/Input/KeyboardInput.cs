@@ -22,12 +22,12 @@ namespace GravityDash.Logic.Input
         public void GetKeyUp(KeyEventArgs e)
         {
             ActiveMovements.Remove(e.Key.ToString());
-            foreach (var x in ActiveMovements)
-            {
-                Debug.WriteLine(x);
-            }
+            //foreach (var x in ActiveMovements)
+            //{
+            //    Debug.WriteLine(x);
+            //}
 
-            Debug.WriteLine("-----------(UP)");
+            //Debug.WriteLine("-----------(UP)");
         }
 
         public void GetKeyDown(KeyEventArgs e)
@@ -37,11 +37,11 @@ namespace GravityDash.Logic.Input
                 ActiveMovements.Add(e.Key.ToString());
             }
 
-            foreach (var x in ActiveMovements)
-            {
-                Debug.WriteLine(x);
-            }
-            Debug.WriteLine("-----------(DOWN)");
+            //foreach (var x in ActiveMovements)
+            //{
+            //    Debug.WriteLine(x);
+            //}
+            //Debug.WriteLine("-----------(DOWN)");
         }
     }
 }
