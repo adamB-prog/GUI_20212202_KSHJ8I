@@ -36,7 +36,17 @@ namespace GravityDash.Logic
             
             if (Animation == lastAnimation)//continue with next frame
             {
-                if (Animation == 0)
+                if(Animation == 3)
+                {
+                    //17-20 jobbra ugrik
+                    //21-24 balra ugrik
+                    for (int i = 17; i < 21; i++)
+                    {
+                        model.PlayerRepository.UpdatePlayer(input.ActiveMovements.Contains("A") ? (i + 4) : i);
+                        Thread.Sleep(250);
+                    }
+                }
+                else if (Animation == 0)
                 {
                     //13-16 között váltogatni
                     if (lastFrame == 17)
@@ -45,7 +55,7 @@ namespace GravityDash.Logic
                     lastFrame++;
                     Thread.Sleep(100);
                 }
-                if (Animation == 2)
+                else if (Animation == 2)
                 {
                     //1-6 között váltogatni
                     if (lastFrame == 7)
@@ -54,7 +64,7 @@ namespace GravityDash.Logic
                     lastFrame++;
                     Thread.Sleep(100);
                 }
-                if(Animation == 1)
+                else if(Animation == 1)
                 {
                     //7-12 között vált
                     if (lastFrame == 13)
@@ -253,10 +263,12 @@ namespace GravityDash.Logic
             {
                 //Gravitáció
                 player.Velocity = Vector2.Add(player.Velocity, new Vector2(0, GRAVITY)).Y < MAXFALLSPEED ? Vector2.Add(player.Velocity, new Vector2(0, GRAVITY)) : new Vector2(player.Velocity.X, MAXFALLSPEED);
+
                 if (input.ActiveMovements.Contains("A") && input.ActiveMovements.Contains("D")) 
                 {
                     if (player.Velocity.X == -5 || player.Velocity.X == 5)
                         player.Velocity = new Vector2(0, player.Velocity.Y);
+                    Animation = 0;
                 }
                 else if (input.ActiveMovements.Contains("A"))
                 {
@@ -265,7 +277,9 @@ namespace GravityDash.Logic
                         player.Velocity = Vector2.Add(player.Velocity, new Vector2(-0.1f, 0));
                     }
                     else { player.Velocity = new Vector2(-5, player.Velocity.Y); }
-                    Animation = 1;
+
+                    if (!input.ActiveMovements.Contains("W"))
+                        Animation = 1;
                 }
                 else if (input.ActiveMovements.Contains("D"))
                 {
@@ -274,9 +288,15 @@ namespace GravityDash.Logic
                         player.Velocity = Vector2.Add(player.Velocity, new Vector2(0.1f, 0));
                     }
                     else { player.Velocity = new Vector2(5, player.Velocity.Y); }
-                    Animation = 2;
+
+                    if (!input.ActiveMovements.Contains("W"))
+                        Animation = 2;
                 }
-                else { Animation = 0; }
+                else 
+                {
+                    if(!input.ActiveMovements.Contains("W"))
+                        Animation = 0; 
+                }
 
                 if (!input.ActiveMovements.Contains("A"))
                 {
@@ -295,8 +315,10 @@ namespace GravityDash.Logic
                     {
                         player.Velocity = new Vector2(player.Velocity.X, -3);
                         player.CanJump = false;
+                        Animation = 3;
                     }
                 }
+
                 if (input.ActiveMovements.Contains("S"))
                 {
                     if(player.Radius == 16)//default radius

@@ -68,7 +68,7 @@ namespace GravityDash.Main
                     logic.CbSpawner();
                 }
             }, TaskCreationOptions.LongRunning);
-            //spawnerTask.Start();
+            spawnerTask.Start();
 
             var animationTask = new Task(() =>
             {
