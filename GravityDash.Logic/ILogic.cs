@@ -14,6 +14,7 @@ namespace GravityDash.Logic
 
         void CbSpawner();
 
+        void PlayerAnimation();
         void GetKeyDown(KeyEventArgs e);
 
         void GetKeyUp(KeyEventArgs e);

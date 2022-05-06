@@ -20,6 +20,10 @@ namespace GravityDash.Logic
         IInput input;
         const int MAXFALLSPEED = 5;
         const float GRAVITY = 0.05f;
+
+        public int Animation = 2; //0: idle,   1: running left,   2: running right,   3: jump
+        int lastAnimation = 0;
+        int lastFrame = 0;
         public CannonBall cbToShoot { get; set; }//repo
         Random rnd = new Random();
         public InGameLogic(IGameModel model, IInput input)
@@ -27,6 +31,43 @@ namespace GravityDash.Logic
             this.input = input;
             this.model = model;
         }
+        public void PlayerAnimation()
+        {
+            
+            if (Animation == lastAnimation)//continue with next frame
+            {
+                if(Animation == 2)
+                {
+                    //1-6 között váltogatni
+                    if (lastFrame == 6)
+                        lastFrame = 1;
+                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                }
+                if(Animation == 1)
+                {
+                    //7-12 között vált
+                    if (lastFrame == 12)
+                        lastFrame = 7;
+                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                }
+            }
+            else
+            {
+                lastAnimation = Animation;
+                if(Animation == 2)
+                {
+                    lastFrame = 1;
+                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                }
+                if (Animation == 1)
+                {
+                    lastFrame = 7;
+                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                }
+            }
+            Thread.Sleep(100);
+        }
+    
 
         public void CbSpawner()
         {
@@ -204,6 +245,7 @@ namespace GravityDash.Logic
                         player.Velocity = Vector2.Add(player.Velocity, new Vector2(-0.1f, 0));
                     }
                     else { player.Velocity = new Vector2(-5, player.Velocity.Y); }
+                    Animation = 1;
                 }
                 else if (input.ActiveMovements.Contains("D"))
                 {
@@ -212,6 +254,7 @@ namespace GravityDash.Logic
                         player.Velocity = Vector2.Add(player.Velocity, new Vector2(0.1f, 0));
                     }
                     else { player.Velocity = new Vector2(5, player.Velocity.Y); }
+                    Animation = 2;
                 }
 
                 if (!input.ActiveMovements.Contains("A"))

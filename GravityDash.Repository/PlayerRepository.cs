@@ -25,7 +25,8 @@ namespace GravityDash.Repository
                 ID = 1,
                 Name = "Slampa",
                 //Character = new SolidColorBrush(Color.FromArgb(133, 255, 0, 0)),
-                Character = new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "player.png"), UriKind.RelativeOrAbsolute))),
+                //Character = new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player","player.png"), UriKind.RelativeOrAbsolute))),
+                Character = Player.Skins[0],
                 Radius = 16,
                 CanJump = true
             }
@@ -52,12 +53,13 @@ namespace GravityDash.Repository
             return players;
         }
 
-        public void UpdatePlayer(Player player)
+        public void UpdatePlayer(int brush)
         {
-            var old = ReadPlayer(player.ID);
-            old.X = player.X;
-            old.Y = player.Y;
-            old.Velocity = old.Velocity;
+            //var old = ReadPlayer(player.ID);
+            //old.X = player.X;
+            //old.Y = player.Y;
+            //old.Velocity = old.Velocity;
+            players[0].Character = Player.Skins[brush];
         }
     }
 }

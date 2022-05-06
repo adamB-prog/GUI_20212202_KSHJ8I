@@ -69,6 +69,16 @@ namespace GravityDash.Main
                 }
             }, TaskCreationOptions.LongRunning);
             spawnerTask.Start();
+
+            var animationTask = new Task(() =>
+            {
+
+                while (true)
+                {
+                    logic.PlayerAnimation();
+                }
+            }, TaskCreationOptions.LongRunning);
+            animationTask.Start();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

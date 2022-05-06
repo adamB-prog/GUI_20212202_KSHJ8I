@@ -1,12 +1,15 @@
 ﻿using GravityDash.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+//using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GravityDash.Models
 {
@@ -14,12 +17,29 @@ namespace GravityDash.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Brush Character { get; set; }
+        public ImageBrush Character { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
         public Vector2 Velocity { get; set; }
         public int Radius { get; set; }
         public bool CanJump { get; set; }
+        static public List<ImageBrush> Skins = new List<ImageBrush>()
+        {
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "player.png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (1).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (2).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (3).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (4).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (5).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run (6).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (1).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (2).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (3).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (4).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (5).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (6).png"), UriKind.RelativeOrAbsolute))),
+        };
+        
 
         public void Collision(GameItem other)
         {
