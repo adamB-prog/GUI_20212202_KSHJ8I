@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+	  <TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GravityDash.Models\GravityDash.Models.csproj" />
+    <ProjectReference Include="..\GravityDash.Repository\GravityDash.Repository.csproj" />
+  </ItemGroup>
 
 </Project>
