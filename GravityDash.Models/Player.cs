@@ -38,6 +38,18 @@ namespace GravityDash.Models
             new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (4).png"), UriKind.RelativeOrAbsolute))),
             new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (5).png"), UriKind.RelativeOrAbsolute))),
             new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_run_left (6).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_idle (1).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_idle (2).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_idle (3).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_idle (4).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_right (1).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_right (2).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_right (3).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_right (4).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_left (1).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_left (2).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_left (3).png"), UriKind.RelativeOrAbsolute))),
+            new ImageBrush(new BitmapImage(new Uri(Path.Combine("Asset", "Player", "Biker_jump_left (4).png"), UriKind.RelativeOrAbsolute))),
         };
         
 

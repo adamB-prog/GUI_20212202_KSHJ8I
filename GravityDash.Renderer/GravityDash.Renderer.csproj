@@ -81,6 +81,18 @@
     <None Remove="Asset\cb.png" />
     <None Remove="Asset\platforms01.txt" />
     <None Remove="Asset\player.png" />
+    <None Remove="Asset\Player\Biker_idle %281%29.png" />
+    <None Remove="Asset\Player\Biker_idle %282%29.png" />
+    <None Remove="Asset\Player\Biker_idle %283%29.png" />
+    <None Remove="Asset\Player\Biker_idle %284%29.png" />
+    <None Remove="Asset\Player\Biker_jump_left %281%29.png" />
+    <None Remove="Asset\Player\Biker_jump_left %282%29.png" />
+    <None Remove="Asset\Player\Biker_jump_left %283%29.png" />
+    <None Remove="Asset\Player\Biker_jump_left %284%29.png" />
+    <None Remove="Asset\Player\Biker_jump_right %281%29.png" />
+    <None Remove="Asset\Player\Biker_jump_right %282%29.png" />
+    <None Remove="Asset\Player\Biker_jump_right %283%29.png" />
+    <None Remove="Asset\Player\Biker_jump_right %284%29.png" />
     <None Remove="Asset\Player\Biker_run %281%29.png" />
     <None Remove="Asset\Player\Biker_run %282%29.png" />
     <None Remove="Asset\Player\Biker_run %283%29.png" />
@@ -318,6 +330,42 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\platforms01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_idle (1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_idle (2).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_idle (3).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_idle (4).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_left (1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_left (2).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_left (3).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_left (4).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_right (1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_right (2).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_right (3).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Player\Biker_jump_right (4).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\Player\Biker_run (1).png">

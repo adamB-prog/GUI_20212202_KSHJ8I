@@ -36,36 +36,56 @@ namespace GravityDash.Logic
             
             if (Animation == lastAnimation)//continue with next frame
             {
-                if(Animation == 2)
+                if (Animation == 0)
+                {
+                    //13-16 között váltogatni
+                    if (lastFrame == 17)
+                        lastFrame = 13;
+                    model.PlayerRepository.UpdatePlayer(lastFrame);
+                    lastFrame++;
+                    Thread.Sleep(100);
+                }
+                if (Animation == 2)
                 {
                     //1-6 között váltogatni
-                    if (lastFrame == 6)
+                    if (lastFrame == 7)
                         lastFrame = 1;
-                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                    model.PlayerRepository.UpdatePlayer(lastFrame);
+                    lastFrame++;
+                    Thread.Sleep(100);
                 }
                 if(Animation == 1)
                 {
                     //7-12 között vált
-                    if (lastFrame == 12)
+                    if (lastFrame == 13)
                         lastFrame = 7;
-                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                    model.PlayerRepository.UpdatePlayer(lastFrame);
+                    lastFrame++;
+                    Thread.Sleep(100);
                 }
             }
             else
             {
                 lastAnimation = Animation;
-                if(Animation == 2)
+                if (Animation == 0)
+                {
+                    lastFrame = 13;
+                    model.PlayerRepository.UpdatePlayer(lastFrame++);
+                    Thread.Sleep(100);
+                }
+                if (Animation == 2)
                 {
                     lastFrame = 1;
                     model.PlayerRepository.UpdatePlayer(lastFrame++);
+                    Thread.Sleep(100);
                 }
                 if (Animation == 1)
                 {
                     lastFrame = 7;
                     model.PlayerRepository.UpdatePlayer(lastFrame++);
+                    Thread.Sleep(100);
                 }
             }
-            Thread.Sleep(100);
         }
     
 
@@ -256,6 +276,7 @@ namespace GravityDash.Logic
                     else { player.Velocity = new Vector2(5, player.Velocity.Y); }
                     Animation = 2;
                 }
+                else { Animation = 0; }
 
                 if (!input.ActiveMovements.Contains("A"))
                 {
