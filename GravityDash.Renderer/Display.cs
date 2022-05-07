@@ -18,8 +18,7 @@ namespace GravityDash.Renderer
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            Debug.WriteLine($"X: {vp.X}");
-            Debug.WriteLine($"Y: {vp.Y}");
+            
             //Background
             drawingContext.DrawRectangle(new LinearGradientBrush(Color.FromArgb(255, 249, 194, 199), Color.FromArgb(255, 152, 185, 231), new Point(1, 0), new Point(1, 1)), null, new Rect(0, 0, areaWidth, areaHeight));
 

@@ -34,51 +34,8 @@ namespace GravityDash.Main
         {
             InitializeComponent();
 
-            model = new GameModel();
-            logic = new InGameLogic(model, new KeyboardInput());
-
-
-            viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
-
-            display.SetupViewPort(viewport);
-            display.SetupModel(model);//
-
-
-
+            NewGame();
             CompositionTarget.Rendering += Render;
-
-            var ts = new Task(() => {
-
-                
-                while (true)
-                {
-                    logic.Tick();
-                    viewport.Follow(); 
-                    Thread.Sleep(1000 / 60);
-                   
-                }
-            }, TaskCreationOptions.LongRunning);
-            ts.Start();
-
-            var spawnerTask = new Task(() =>
-            {
-                Thread.Sleep(4000);
-                while (true)
-                {
-                    logic.CbSpawner();
-                }
-            }, TaskCreationOptions.LongRunning);
-            spawnerTask.Start();
-
-            var animationTask = new Task(() =>
-            {
-
-                while (true)
-                {
-                    logic.PlayerAnimation();
-                }
-            }, TaskCreationOptions.LongRunning);
-            animationTask.Start();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -89,12 +46,15 @@ namespace GravityDash.Main
         }
         private void Render(object sender, EventArgs e)
         {
-            s.Reset();
-            s.Start();
-            //viewport.Move();
+            
+            if (logic.GameOver)
+            {
+                GameOver();
+            }
+            
             display.InvalidateVisual();
-            s.Stop();
-            Title = ((int)(1 / s.Elapsed.TotalMilliseconds)).ToString();
+            stopwatch_label.Content = s.Elapsed;
+            
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -106,6 +66,73 @@ namespace GravityDash.Main
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             display.Resize(this.ActualWidth, this.ActualHeight);
+        }
+
+        private void NewGame()
+        {
+            model = new GameModel();
+            logic = new InGameLogic(model, new KeyboardInput());
+
+
+            viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
+
+            display.SetupViewPort(viewport);
+            display.SetupModel(model);
+
+
+            s.Reset();
+            s.Start();
+
+            var ts = new Task(() => {
+
+
+                while (!logic.GameOver)
+                {
+                    logic.Tick();
+                    viewport.Follow();
+                    Thread.Sleep(1000 / 60);
+
+                }
+            }, TaskCreationOptions.LongRunning);
+            
+            ts.Start();
+
+            var spawnerTask = new Task(() =>
+            {
+                Thread.Sleep(4000);
+                while (!logic.GameOver)
+                {
+                    logic.CbSpawner();
+                }
+            }, TaskCreationOptions.LongRunning);
+            spawnerTask.Start();
+
+            var animationTask = new Task(() =>
+            {
+
+                while (!logic.GameOver)
+                {
+                    logic.PlayerAnimation();
+                }
+            }, TaskCreationOptions.LongRunning);
+            animationTask.Start();
+
+            
+        }
+
+        private void GameOver()
+        {
+            s.Stop();
+            gameover_label.Visibility = Visibility.Visible;
+            newgame_button.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NewGame();
+
+            gameover_label.Visibility = Visibility.Hidden;
+            newgame_button.Visibility = Visibility.Hidden;
         }
     }
 }
