@@ -43,8 +43,8 @@ namespace GravityDash.Renderer
         public void Follow()
         {
             
-            x = Math.Clamp((int)(-follow.X * zoom + viewportWidth / 2), -1000, -0);
-            y = Math.Clamp((int)(-follow.Y * zoom + viewportHeight / 2), -1000, 0);
+            x = Math.Clamp((int)(-follow.X * zoom + viewportWidth / 2), -1000, 0);
+            y = Math.Clamp((int)(-follow.Y * zoom + viewportHeight / 2), -1000, 200);
             
         }
     }
