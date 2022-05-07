@@ -11,6 +11,12 @@
         <renderer:Display x:Name="display" />
         <Label Content="0:00" x:Name="stopwatch_label" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="Game Over!" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Visibility="Hidden" x:Name="gameover_label"/>
-        <Button x:Name="newgame_button" Content="New Game!" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="232" FontSize="30" Click="Button_Click" Visibility="Hidden"/>
+        <Button x:Name="newgame_button" Content="New Game!" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30" Click="Button_Click" Visibility="Hidden"/>
+        <Label Content="HighScore: 0:00" x:Name="highscore_label" FontSize="30" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Right" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Height="600" Width="230" x:Name="highscorelist_textblock" Visibility="Hidden" FontSize="20"/>
+
+
+
+
     </Grid>
 </Window>

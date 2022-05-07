@@ -1,4 +1,5 @@
-﻿using GravityDash.Logic;
+﻿using GravityDash.Data;
+using GravityDash.Logic;
 using GravityDash.Logic.Input;
 using GravityDash.Models.Interfaces;
 using GravityDash.Renderer;
@@ -26,16 +27,18 @@ namespace GravityDash.Main
     /// </summary>
     public partial class MainWindow : Window
     {
+        ScoreData data = new ScoreData();
         Stopwatch s = new Stopwatch();
         IGameModel model;
         ILogic logic;
-        ViewPort viewport;
+        IViewPort viewport;
         public MainWindow()
         {
             InitializeComponent();
 
             NewGame();
-            CompositionTarget.Rendering += Render;
+            CompositionTarget.Rendering += Render; 
+            highscore_label.Content = data.GetHighScore();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -47,7 +50,7 @@ namespace GravityDash.Main
         private void Render(object sender, EventArgs e)
         {
             
-            if (logic.GameOver)
+            if (logic.GameOver && gameover_label.Visibility == Visibility.Hidden)
             {
                 GameOver();
             }
@@ -73,12 +76,14 @@ namespace GravityDash.Main
             model = new GameModel();
             logic = new InGameLogic(model, new KeyboardInput());
 
-
+            
             viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
 
-            display.SetupViewPort(viewport);
+            display.SetupViewPort((ViewPort)viewport);
             display.SetupModel(model);
 
+
+            highscorelist_textblock.Visibility = Visibility.Hidden;
 
             s.Reset();
             s.Start();
@@ -123,6 +128,11 @@ namespace GravityDash.Main
         private void GameOver()
         {
             s.Stop();
+            data.AddScore(s.Elapsed);
+            data.SaveScores();
+            highscore_label.Content = data.GetHighScore();
+            highscorelist_textblock.Text = data.GetScoreList();
+            highscorelist_textblock.Visibility = Visibility.Visible;
             gameover_label.Visibility = Visibility.Visible;
             newgame_button.Visibility = Visibility.Visible;
         }
