@@ -103,7 +103,7 @@ namespace GravityDash.Logic
         }
     
 
-        public void CbSpawner()
+        public void CbSpawner(CancellationToken token)
         {
             Point playerCoordinates = new Point(model.PlayerRepository.ReadPlayer(1).X, model.PlayerRepository.ReadPlayer(1).Y);
             int cbX, cbY, angle;

@@ -32,6 +32,7 @@ namespace GravityDash.Main
         IGameModel model;
         ILogic logic;
         IViewPort viewport;
+        CancellationTokenSource source = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
@@ -81,8 +82,8 @@ namespace GravityDash.Main
         {
             model = new GameModel();
             logic = new InGameLogic(model, new KeyboardInput());
+            source = new CancellationTokenSource();
 
-            
             viewport = new ViewPort(0, 0, (int)display.ActualWidth, (int)display.ActualHeight, model.PlayerRepository.ReadPlayer(1));
 
             display.SetupViewPort((ViewPort)viewport);
@@ -104,38 +105,39 @@ namespace GravityDash.Main
                     Thread.Sleep(1000 / 60);
 
                 }
-            }, TaskCreationOptions.LongRunning);
-            
+            }, TaskCreationOptions.LongRunning);           
             ts.Start();
 
+
+            CancellationTokenSource source22 = source;
             var spawnerTask = new Task(() =>
-            {
-                Thread.Sleep(4000);
-                while (!logic.GameOver)
+            {          
+                Thread.Sleep(2000);
+                while (!source22.IsCancellationRequested)
                 {
-                    logic.CbSpawner();
+                    logic.CbSpawner(source22.Token);          
                 }
-            }, TaskCreationOptions.LongRunning);
+            }, source22.Token, TaskCreationOptions.LongRunning);
             spawnerTask.Start();
 
             var animationTask = new Task(() =>
             {
-
                 while (!logic.GameOver)
                 {
                     logic.PlayerAnimation();
                 }
             }, TaskCreationOptions.LongRunning);
-            animationTask.Start();
-
-            
+            animationTask.Start();       
         }
 
         private void GameOver()
         {
+            source.Cancel();
             s.Stop();
             data.AddScore(s.Elapsed);
             data.SaveScores();
+            
+
 
             CompositionTarget.Rendering -= Render;
             highscore_label.Content = data.GetHighScore();
