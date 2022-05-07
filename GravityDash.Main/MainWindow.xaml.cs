@@ -36,21 +36,24 @@ namespace GravityDash.Main
         {
             InitializeComponent();
 
-            NewGame();
-            CompositionTarget.Rendering += Render; 
+           // NewGame();
+            
             highscore_label.Content = data.GetHighScore();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (logic is not null)
+            {
+                logic.GetKeyDown(e);
+            }
            
-            logic.GetKeyDown(e);
 
         }
         private void Render(object sender, EventArgs e)
         {
             
-            if (logic.GameOver && gameover_label.Visibility == Visibility.Hidden)
+            if (logic is not null && logic.GameOver && gameover_label.Visibility == Visibility.Hidden)
             {
                 GameOver();
             }
@@ -62,8 +65,11 @@ namespace GravityDash.Main
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
+            if (logic is not null)
+            {
+                logic.GetKeyUp(e);
+            }   
             
-            logic.GetKeyUp(e);
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -82,7 +88,7 @@ namespace GravityDash.Main
             display.SetupViewPort((ViewPort)viewport);
             display.SetupModel(model);
 
-
+            CompositionTarget.Rendering += Render;
             highscorelist_textblock.Visibility = Visibility.Hidden;
 
             s.Reset();
@@ -130,17 +136,27 @@ namespace GravityDash.Main
             s.Stop();
             data.AddScore(s.Elapsed);
             data.SaveScores();
+
+            CompositionTarget.Rendering -= Render;
             highscore_label.Content = data.GetHighScore();
             highscorelist_textblock.Text = data.GetScoreList();
-            highscorelist_textblock.Visibility = Visibility.Visible;
-            gameover_label.Visibility = Visibility.Visible;
-            newgame_button.Visibility = Visibility.Visible;
+            ShowUI();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NewGame();
 
+            HideUI();
+        }
+        private void ShowUI()
+        {
+            highscorelist_textblock.Visibility = Visibility.Visible;
+            gameover_label.Visibility = Visibility.Visible;
+            newgame_button.Visibility = Visibility.Visible;
+        }
+        private void HideUI()
+        {
             gameover_label.Visibility = Visibility.Hidden;
             newgame_button.Visibility = Visibility.Hidden;
         }
