@@ -10,6 +10,7 @@ namespace GravityDash.Logic
 {
     public interface ILogic
     {
+        public bool GameOver { get; set; }
         void Tick();
 
         void CbSpawner();

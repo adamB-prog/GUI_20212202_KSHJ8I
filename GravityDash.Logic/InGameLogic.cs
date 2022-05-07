@@ -21,6 +21,9 @@ namespace GravityDash.Logic
         const int MAXFALLSPEED = 5;
         const float GRAVITY = 0.05f;
 
+        public bool GameOver { get; set; }
+
+
         public int Animation = 2; //0: idle,   1: running left,   2: running right,   3: jump
         int lastAnimation = 0;
         int lastFrame = 0;
@@ -30,6 +33,7 @@ namespace GravityDash.Logic
         {
             this.input = input;
             this.model = model;
+            this.GameOver = false;
         }
         public void PlayerAnimation()
         {
@@ -202,6 +206,10 @@ namespace GravityDash.Logic
             {
                 x.X += x.Velocity.X;
                 x.Y += x.Velocity.Y;
+                if (OutOfLevel(x))
+                {
+                    GameOver = true;
+                }
             }
             foreach (var x in model.LevelRepository.level.CannonBalls.Where(cb => !cb.Ignore))
             {
@@ -247,6 +255,11 @@ namespace GravityDash.Logic
                         cb.Collision(player);
                 }
             }
+        }
+
+        private bool OutOfLevel(Player x)
+        {
+            return x.Y > 1000;
         }
 
         public void GetKeyDown(KeyEventArgs e)
