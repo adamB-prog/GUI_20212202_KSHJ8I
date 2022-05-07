@@ -43,6 +43,10 @@ namespace GravityDash.Data
 
         public string GetHighScore()
         {
+            if (Scores.Count == 0)
+            {
+                return "0:00.00";
+            }
             TimeSpan score = Scores[0];
             return string.Format("HighScore: {0}:{1}.{2}", score.Minutes, score.Seconds, score.Milliseconds);
         }
