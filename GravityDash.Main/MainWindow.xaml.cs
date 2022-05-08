@@ -37,8 +37,8 @@ namespace GravityDash.Main
         {
             InitializeComponent();
 
-           // NewGame();
-            
+            // NewGame();
+            UpdateScoreList();
             highscore_label.Content = data.GetHighScore();
         }
 
@@ -60,7 +60,7 @@ namespace GravityDash.Main
             }
             
             display.InvalidateVisual();
-            stopwatch_label.Content = s.Elapsed;
+            stopwatch_label.Content = string.Format("{0}:{1}.{2}",s.Elapsed.Minutes, s.Elapsed.Seconds < 10 ? "0" + s.Elapsed.Seconds: s.Elapsed.Seconds, s.Elapsed.Milliseconds);
             
         }
 
@@ -90,7 +90,7 @@ namespace GravityDash.Main
             display.SetupModel(model);
 
             CompositionTarget.Rendering += Render;
-            highscorelist_textblock.Visibility = Visibility.Hidden;
+            HideUI();
 
             s.Reset();
             s.Start();
@@ -141,7 +141,7 @@ namespace GravityDash.Main
 
             CompositionTarget.Rendering -= Render;
             highscore_label.Content = data.GetHighScore();
-            highscorelist_textblock.Text = data.GetScoreList();
+            UpdateScoreList();
             ShowUI();
         }
 
@@ -154,6 +154,7 @@ namespace GravityDash.Main
         private void ShowUI()
         {
             highscorelist_textblock.Visibility = Visibility.Visible;
+            scores_label.Visibility = Visibility.Visible;
             gameover_label.Visibility = Visibility.Visible;
             newgame_button.Visibility = Visibility.Visible;
         }
@@ -161,6 +162,14 @@ namespace GravityDash.Main
         {
             gameover_label.Visibility = Visibility.Hidden;
             newgame_button.Visibility = Visibility.Hidden;
+            highscorelist_textblock.Visibility = Visibility.Hidden;
+
+            scores_label.Visibility = Visibility.Hidden;
+        }
+
+        private void UpdateScoreList()
+        {
+            highscorelist_textblock.Text = data.GetScoreList();
         }
     }
 }

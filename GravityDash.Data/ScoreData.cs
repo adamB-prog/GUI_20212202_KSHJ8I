@@ -48,7 +48,7 @@ namespace GravityDash.Data
                 return "0:00.00";
             }
             TimeSpan score = Scores[0];
-            return string.Format("HighScore: {0}:{1}.{2}", score.Minutes, score.Seconds, score.Milliseconds);
+            return string.Format("HighScore: {0}:{1}.{2}", score.Minutes, score.Seconds < 10 ? "0" + score.Seconds : score.Seconds, score.Milliseconds);
         }
 
         public string GetScoreList()
@@ -56,7 +56,7 @@ namespace GravityDash.Data
             string scores = "";
             for (int i = 0; i < Scores.Count; i++)
             {
-                scores += string.Format("{0}:{1}.{2}\n", Scores[i].Minutes, Scores[i].Seconds, Scores[i].Milliseconds);
+                scores += string.Format("{0}:{1}.{2}\n", Scores[i].Minutes, Scores[i].Seconds < 10 ? "0" + Scores[i].Seconds : Scores[i].Seconds, Scores[i].Milliseconds);
             }
 
             return scores;

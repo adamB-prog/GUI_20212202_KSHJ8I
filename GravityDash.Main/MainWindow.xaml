@@ -13,7 +13,8 @@
         <Label Content="Game Over!" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Visibility="Hidden" x:Name="gameover_label"/>
         <Button x:Name="newgame_button" Content="New Game!" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30" Click="Button_Click"/>
         <Label Content="HighScore: 0:00" x:Name="highscore_label" FontSize="30" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Right" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Height="600" Width="230" x:Name="highscorelist_textblock" FontSize="20"/>
+        <Label Content="Scores:" x:Name="scores_label" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,00,125,0"/>
+        <TextBlock HorizontalAlignment="Right" Text="awdas" TextWrapping="Wrap" VerticalAlignment="Center" Height="600" Width="230" x:Name="highscorelist_textblock" FontSize="20"/>
 
 
 
