@@ -54,6 +54,15 @@ namespace GravityDash.Data
         public string GetScoreList()
         {
             string scores = "";
+
+            if (Scores.Count > 10)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    scores += string.Format("{0}:{1}.{2}\n", Scores[i].Minutes, Scores[i].Seconds < 10 ? "0" + Scores[i].Seconds : Scores[i].Seconds, Scores[i].Milliseconds);
+                }
+                return scores;
+            }
             for (int i = 0; i < Scores.Count; i++)
             {
                 scores += string.Format("{0}:{1}.{2}\n", Scores[i].Minutes, Scores[i].Seconds < 10 ? "0" + Scores[i].Seconds : Scores[i].Seconds, Scores[i].Milliseconds);
