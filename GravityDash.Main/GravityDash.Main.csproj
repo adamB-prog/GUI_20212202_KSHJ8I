@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="gameplay.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="gameplay.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GravityDash.Data\GravityDash.Data.csproj" />
     <ProjectReference Include="..\GravityDash.Logic\GravityDash.Logic.csproj" />
     <ProjectReference Include="..\GravityDash.Renderer\GravityDash.Renderer.csproj" />

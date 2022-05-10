@@ -61,7 +61,6 @@ namespace GravityDash.Main
             
             display.InvalidateVisual();
             stopwatch_label.Content = string.Format("{0}:{1}.{2}",s.Elapsed.Minutes, s.Elapsed.Seconds < 10 ? "0" + s.Elapsed.Seconds: s.Elapsed.Seconds, s.Elapsed.Milliseconds);
-            
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -148,6 +147,7 @@ namespace GravityDash.Main
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NewGame();
+            mePlayer.IsEnabled = false;
 
             HideUI();
         }
@@ -170,6 +170,11 @@ namespace GravityDash.Main
         private void UpdateScoreList()
         {
             highscorelist_textblock.Text = data.GetScoreList();
+        }
+
+        private void mePlayer_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Position = TimeSpan.Zero;
         }
     }
 }
