@@ -22,10 +22,15 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <Button x:Name="newgame_button" Content="New Game!" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="50" Click="Button_Click"  Margin="0 0 0 50" Padding="10" FontFamily="Agency FB" FontWeight="Bold">
+        <Button x:Name="newgame_button" Content="New Game!" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="50" Click="Button_Click"  Margin="0 0 0 50" Padding="10" FontFamily="Agency FB" FontWeight="Bold" Background="#cafc03">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="40"/>
+                </Style>
+            </Button.Resources>
         </Button>
         <Label Content="HighScore: 0:00" x:Name="highscore_label" FontSize="40" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" FontFamily="Agency FB" FontWeight="Bold"/>
         <Label Content="Top 10 scores:" x:Name="scores_label" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0" FontFamily="Agency FB" FontWeight="Bold"/>
